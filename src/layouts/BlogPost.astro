@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout 
+  title={frontmatter.title}
+  description={frontmatter.excerpt}
+  type="article"
+  image={frontmatter.image || "/Portfolio.png"}
+>
+  <article class="max-w-prose mx-auto px-4 min-h-[calc(100vh-20rem)]">
+    <header class="my-12 text-center">
+      <h1 class="text-4xl font-bold text-primary mb-4 leading-tight">
+        {frontmatter.title}
+      </h1>
+      <time class="text-secondary block mb-4">
+        {new Date(frontmatter.date).toLocaleDateString(undefined, {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </time>
+      {frontmatter.excerpt && 
+        <p class="text-secondary text-lg max-w-2xl mx-auto">
+          {frontmatter.excerpt}
+        </p>
+      }
+    </header>
+    <div class="prose prose-primary prose-lg mx-auto">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

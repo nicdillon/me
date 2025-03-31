@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Blog - Nic Dillon";
+const description = "Read insights and articles about software development, technology trends, and digital innovation from Nic Dillon.";
+const posts = await Astro.glob('./*.md');
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container max-w-prose mx-auto px-4">
+    <header class="page-header">
+      <h1 class="text-3xl font-semibold text-primary">Blog</h1>
+    </header>
+    
+    <div class="space-y-8">
+      {posts.length === 0 ? (
+        <p class="text-secondary italic">No blog posts yet. Check back soon!</p>
+      ) : (
+        posts.map(post => (
+          <article class="group">
+            <a href={post.url} class="block p-6 rounded-xl bg-white shadow-sm 
+                                    transition-all duration-200 hover:shadow-md">
+              <h2 class="text-2xl font-semibold text-primary group-hover:text-accent 
+                         transition-colors duration-200">
+                {post.frontmatter.title}
+              </h2>
+              <time class="block text-secondary mt-2 text-sm">
+                {new Date(post.frontmatter.date).toLocaleDateString(undefined, {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <p class="mt-3 text-secondary leading-relaxed">
+                {post.frontmatter.excerpt}
+              </p>
+            </a>
+          </article>
+        ))
+      )}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,27 @@
+---
+const navItems = [
+  { href: '/', text: 'Home' },
+  { href: '/projects', text: 'Projects' },
+  { href: '/blog', text: 'Blog' },
+  { href: '/about', text: 'About' },
+];
+---
+
+<nav class="w-full border-none">
+  <div class="container flex justify-center py-6">
+    <ul class="flex items-center gap-8">
+      {navItems.map(({ href, text }) => (
+        <li>
+          <a
+            href={href}
+            class="nav-link relative before:absolute before:inset-x-0 before:bottom-0 before:h-0.5 
+                   before:origin-left before:scale-x-0 before:bg-accent 
+                   before:transition-transform hover:before:scale-x-100"
+          >
+            {text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>

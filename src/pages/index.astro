@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+const title = "Nic Dillon - Software Developer & Technology Consultant";
+const description = "Software developer and technology consultant based in Statesville, NC, specializing in web development, cloud solutions, and digital innovation.";
+---
+
+<BaseLayout 
+  title={title} 
+  description={description}
+  type="profile"
+>
+  <main class="flex flex-col items-center justify-center min-h-[50vh] py-4 px-4">
+    <Image
+      src="/profile.jpg"
+      alt="Nic's Profile Picture"
+      width={96}
+      height={96}
+      class="profile-img"
+      loading="eager"
+      format="webp"
+    />
+    <div class="text-center max-w-2xl mx-auto">
+      <h1 class="name-title">Nic Dillon</h1>
+      <p class="bio-text">Technologist · Creator · Problem Solver</p>
+    </div>
+
+    <div class="w-full max-w-md mx-auto space-y-3">
+      <a href="https://github.com/nicdillon" 
+         class="link group flex items-center">
+        <Icon name="mdi:github" 
+              class="w-6 h-6 mr-3 transition-transform group-hover:scale-110" /> 
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/nicholas-dillon-72516b153/" 
+         class="link group flex items-center">
+        <Icon name="mdi:linkedin" 
+              class="w-6 h-6 mr-3 transition-transform group-hover:scale-110" /> 
+        LinkedIn
+      </a>
+      <a href="https://substack.com/@nicdillon" 
+         class="link group flex items-center">
+        <Icon name="simple-icons:substack" 
+              class="w-6 h-6 mr-3 transition-transform group-hover:scale-110" /> 
+        Substack
+      </a>
+      <a href="https://x.com/nicdillon10" 
+         class="link group flex items-center">
+        <Icon name="mdi:twitter" 
+              class="w-6 h-6 mr-3 transition-transform group-hover:scale-110" /> 
+        X
+      </a>
+      <a href="mailto:dilloncnicholas@gmail.com" 
+         class="link group flex items-center">
+        <Icon name="mdi:email" 
+              class="w-6 h-6 mr-3 transition-transform group-hover:scale-110" /> 
+        Email Me
+      </a>
+      <a href="/projects" 
+         class="link group flex items-center">
+        <Icon name="mdi:folder-multiple" 
+              class="w-6 h-6 mr-3 transition-transform group-hover:scale-110" /> 
+        View My Projects
+        <Icon name="mdi:arrow-right" 
+              class="w-6 h-6 ml-auto transition-transform group-hover:translate-x-1" />
+      </a>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Contact Nic Dillon - Software Developer";
+const description = "Get in touch with Nic Dillon for software development projects, consulting, or collaboration opportunities.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container max-w-prose mx-auto px-4">
+    <header class="page-header">
+      <h1 class="text-3xl font-semibold text-primary">Contact</h1>
+    </header>
+    
+    <div class="prose prose-primary">
+      <p class="lead text-lg text-secondary">
+        I'm always interested in hearing about new opportunities, collaborations, 
+        or just connecting with fellow developers. Feel free to reach out through 
+        any of these channels:
+      </p>
+      
+      <div class="mt-8 space-y-4">
+        <a href="mailto:dilloncnicholas@gmail.com" 
+           class="link flex items-center">
+          <span class="mr-2">📧</span> dilloncnicholas@gmail.com
+        </a>
+        
+        <a href="https://linkedin.com/in/nicholas-dillon-72516b153" 
+           class="link flex items-center">
+          <span class="mr-2">💼</span> LinkedIn
+        </a>
+        
+        <a href="https://github.com/nicdillon" 
+           class="link flex items-center">
+          <span class="mr-2">👨‍💻</span> GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

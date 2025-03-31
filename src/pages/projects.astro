@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+
+const title = "Projects - Nic Dillon";
+const description = "Explore Nic Dillon's software development projects, including web applications, tools, and open-source contributions.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="container max-w-prose mx-auto px-4">
+    <header class="page-header">
+      <h1 class="text-3xl font-semibold text-primary">Projects</h1>
+    </header>
+    
+    <div class="flex flex-col gap-8">
+      <div class="group relative flex flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl bg-white">
+        <div class="relative object-contain h-auto max-h-64">
+          <Image
+            src="/Portfolio.png"
+            alt="Portfolio Site Screenshot"
+            width={800}
+            height={450}
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            format="webp"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black/90"></div>
+          <div class="absolute top-4 left-4 p-2 bg-white rounded-lg shadow-lg">
+            <Image
+              src="/Portfolio.png"
+              alt="Project Logo"
+              width={32}
+              height={32}
+              class="w-8 h-8 object-contain"
+              format="webp"
+            />
+          </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 flex flex-col justify-end p-4 sm:p-6">
+          <div class="flex-1 flex flex-col">
+            <h2 class="text-xl sm:text-2xl font-semibold mb-2 text-white">Portfolio Site + Link Tree</h2>
+            <p class="text-sm sm:text-base text-gray-200 mb-4">
+              My personal portfolio built with Astro, featuring a modern design
+              and responsive layout.
+            </p>
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <ul class="flex flex-wrap gap-2">
+                <li class="bg-white/10 backdrop-blur-sm px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm 
+                           text-white hover:bg-white/20 transition-colors">
+                  Astro
+                </li>
+              </ul>
+              <a href="https://github.com/nicdillon/me" 
+                 class="inline-flex items-center text-sm sm:text-base text-white/90 hover:text-white transition-colors">
+                <Icon name="mdi:github" class="w-4 h-4 sm:w-5 sm:h-5 mr-2" /> View Source
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

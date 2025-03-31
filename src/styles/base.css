@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-font-color: #1a202c;
+    --secondary-font-color: #4a5568;
+    --link-color: #2d3748;
+    --link-hover-color: #1a202c;
+    --primary-bg-color: #ffffff;
+    --secondary-bg-color: #f7fafc;
+    --accent-color: #805ad5;
+    --accent-hover: #6b46c1;
+  }
+
+  body {
+    @apply bg-white text-primary font-sans antialiased;
+  }
+}
+
+@layer components {
+  .link {
+    @apply block px-6 py-3 text-link font-medium text-[0.95rem] border border-gray-200
+           rounded-xl transition-all duration-200 backdrop-blur-sm bg-white/80
+           hover:border-accent hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  .nav-link {
+    @apply text-primary no-underline py-2 transition-colors duration-200
+           hover:text-link;
+  }
+
+  .container {
+    @apply w-full max-w-7xl mx-auto px-6 box-border;
+  }
+
+  .blog-post {
+    @apply bg-white p-8 my-4 rounded-lg shadow-sm;
+  }
+
+  .page-header {
+    @apply py-8 mb-8 border-b border-gray-200;
+  }
+
+  .profile-img {
+    @apply w-24 h-24 rounded-full mx-auto mb-6 block border-2 border-gray-200 p-0.5;
+  }
+
+  .name-title {
+    @apply text-2xl font-semibold mb-2 tracking-tight text-center;
+  }
+
+  .bio-text {
+    @apply text-secondary text-[0.95rem] mb-8 leading-relaxed text-center;
+  }
+}

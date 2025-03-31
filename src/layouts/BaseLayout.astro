@@ -1,0 +1,148 @@
+---
+import '../styles/base.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'profile';
+}
+
+const { 
+  title = "Nic Dillon - Software Developer",
+  description = "Personal portfolio and blog of Nic Dillon, a software developer specializing in web development.",
+  image = "/Portfolio.png",
+  type = "website"
+} = Astro.props;
+
+// Structured data based on page type
+const getStructuredData = () => {
+  const baseData = {
+    "@context": "https://schema.org",
+  };
+
+  if (type === 'profile') {
+    return {
+      ...baseData,
+      "@type": "Person",
+      "name": "Nic Dillon",
+      "jobTitle": "Software Developer",
+      "url": "https://nicdillon.dev",
+      "sameAs": [
+        "https://github.com/nicdillon",
+        "https://linkedin.com/in/nicholas-dillon-72516b153",
+        "https://x.com/nicdillon10"
+      ]
+    };
+  }
+
+  if (type === 'article') {
+    return {
+      ...baseData,
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "image": new URL(image, Astro.url),
+      "author": {
+        "@type": "Person",
+        "name": "Nic Dillon"
+      }
+    };
+  }
+
+  // Default website type
+  return {
+    ...baseData,
+    "@type": "WebSite",
+    "name": title,
+    "description": description,
+    "url": Astro.url.href
+  };
+};
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    
+    <!-- Basic SEO -->
+    <title>{title}</title>
+    <link rel="canonical" href={Astro.url.href} />
+    
+    <!-- Performance: Preload Critical Assets -->
+    <link rel="preload" href="/styles/global.css" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" as="style" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Font Display Strategy -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+    </noscript>
+    
+    <!-- Existing Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url.href} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    
+    <!-- Performance -->
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Web Vitals Monitoring -->
+    <script type="module">
+      import {onCLS, onFID, onLCP} from 'https://unpkg.com/web-vitals?module';
+
+      function sendToAnalytics({name, delta, value, id}) {
+        const body = JSON.stringify({name, delta, value, id});
+        (navigator.sendBeacon && navigator.sendBeacon('/analytics', body)) || 
+          fetch('/analytics', {body, method: 'POST', keepalive: true});
+      }
+
+      onCLS(sendToAnalytics);
+      onFID(sendToAnalytics);
+      onLCP(sendToAnalytics);
+    </script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(getStructuredData())} />
+  </head>
+  <body class="flex flex-col min-h-screen bg-white">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-none">
+      <Navigation />
+    </header>
+    <main id="main-content" class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 
+           focus:z-50 focus:bg-white focus:p-4 focus:text-black;
+  }
+
+  html {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>

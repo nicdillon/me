@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nicdillon.dev/sitemap.xml

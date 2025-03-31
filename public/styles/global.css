@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+:root {
+  --primary-font-color: #1a202c;
+  --secondary-font-color: #4a5568;
+  --link-color: #2d3748;
+  --link-hover-color: #1a202c;
+  --primary-bg-color: #ffffff;
+  --secondary-bg-color: #f7fafc;
+  --accent-color: #805ad5;
+  --accent-hover: #6b46c1;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.link {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.link:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.text-secondary {
+  color: var(--secondary-font-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-bg-color);
+}
+
+.text-font {
+  color: var(--primary-font-color);
+}
+
+.nav-link {
+  color: var(--primary-font-color);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--link-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .links-container {
+    padding: 0 0.5rem;
+  }
+
+  .link {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .name-title {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .bio-text {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0;
+  }
+}
+
+.blog-post {
+  background: var(--primary-bg-color);
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.blog-title {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.blog-post-title {
+  text-decoration: underline;
+}
+
+.projects-title {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.project-card {
+  background: var(--primary-bg-color);
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.blog-content {
+  line-height: 1.7;
+}
+
+.page-header {
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.profile-img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  display: block;
+  border: 2px solid #e2e8f0;
+  padding: 2px;
+}
+
+.name-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+.bio-text {
+  color: var(--secondary-font-color);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  text-align: center;
+}
